@@ -1,0 +1,226 @@
+.patient-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+  width: 280px;
+  background-color: hsl(var(--sidebar-background));
+  border-right: 1px solid hsl(var(--border));
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: var(--gradient-calm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1.5rem 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  color: hsl(var(--sidebar-foreground));
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background-color: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-primary));
+}
+
+.nav-item.active {
+  background-color: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  border-left: 3px solid hsl(var(--primary));
+}
+
+.sidebar-footer {
+  padding: 1rem 0;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.nav-item.logout {
+  color: hsl(var(--destructive));
+}
+
+.nav-item.logout:hover {
+  background-color: hsl(var(--destructive) / 0.1);
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+}
+
+.header-subtitle {
+  color: hsl(var(--muted-foreground));
+  font-size: 1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-icon-teal {
+  background: hsl(185 65% 55% / 0.15);
+  color: hsl(185 65% 45%);
+}
+
+.card-icon-blue {
+  background: hsl(200 70% 60% / 0.15);
+  color: hsl(200 70% 50%);
+}
+
+.card-icon-green {
+  background: hsl(145 60% 50% / 0.15);
+  color: hsl(145 60% 40%);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-button {
+  background: var(--gradient-calm);
+  transition: var(--transition-smooth);
+  margin-top: 1rem;
+}
+
+.card-button:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-badge {
+  display: inline-block;
+  background: hsl(var(--warning) / 0.15);
+  color: hsl(var(--warning));
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.welcome-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+}
+
+.step-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: hsl(var(--accent));
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+.step-item:hover {
+  background: hsl(var(--accent) / 0.7);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-calm);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: hsl(var(--foreground));
+}
+
+.step-content p {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

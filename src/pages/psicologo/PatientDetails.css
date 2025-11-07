@@ -1,0 +1,203 @@
+.header-with-back {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.back-button {
+  width: fit-content;
+  transition: var(--transition-smooth);
+}
+
+.back-button:hover {
+  background: hsl(var(--accent));
+}
+
+.status-badge {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card-small {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  transition: var(--transition-smooth);
+}
+
+.stat-card-small:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  color: hsl(var(--primary));
+  flex-shrink: 0;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+.stat-value-small {
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.patient-tabs {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.tabs-list {
+  background: hsl(var(--muted));
+  padding: 0.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.tab-content {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.detail-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+}
+
+.detail-item {
+  padding: 1rem;
+  background: hsl(var(--accent));
+  border-radius: 8px;
+  border-left: 3px solid hsl(var(--primary));
+}
+
+.detail-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.detail-text {
+  color: hsl(var(--foreground));
+  line-height: 1.6;
+}
+
+.emotion-analysis-item {
+  padding: 1rem;
+  background: hsl(var(--accent));
+  border-radius: 8px;
+}
+
+.emotion-header-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.emotion-name {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.emotion-percentage {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: hsl(var(--primary));
+}
+
+.emotion-progress-detail {
+  height: 8px;
+}
+
+.emotion-insight {
+  padding: 1rem;
+  background: hsl(var(--warning) / 0.1);
+  border: 1px solid hsl(var(--warning) / 0.3);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.history-item {
+  padding: 1rem;
+  background: hsl(var(--accent));
+  border-radius: 8px;
+  border-left: 3px solid hsl(var(--primary));
+  transition: var(--transition-smooth);
+}
+
+.history-item:hover {
+  background: hsl(var(--accent) / 0.7);
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.history-icon {
+  color: hsl(var(--primary));
+}
+
+.history-date {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  flex: 1;
+}
+
+.history-duration {
+  font-size: 0.75rem;
+}
+
+.history-summary {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

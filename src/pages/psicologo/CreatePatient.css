@@ -1,0 +1,147 @@
+.create-patient-container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.create-patient-card,
+.credentials-card,
+.info-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+}
+
+.patient-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.submit-button {
+  background: var(--gradient-calm);
+  margin-top: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Credentials Success State */
+.credentials-header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.success-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: hsl(var(--success));
+  animation: scaleIn 0.5s ease-out;
+}
+
+.credentials-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.credentials-box {
+  background: hsl(var(--accent));
+  border: 2px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.credential-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.credential-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  font-family: 'Courier New', monospace;
+}
+
+.credential-value.password {
+  color: hsl(var(--primary));
+  background: hsl(var(--background));
+  padding: 0.75rem;
+  border-radius: 6px;
+  letter-spacing: 0.1em;
+}
+
+.credentials-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.copy-button {
+  background: var(--gradient-calm);
+  transition: var(--transition-smooth);
+}
+
+.copy-button:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-soft);
+}
+
+.warning-box {
+  background: hsl(var(--warning) / 0.1);
+  border: 1px solid hsl(var(--warning) / 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

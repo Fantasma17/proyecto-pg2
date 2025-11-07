@@ -1,0 +1,153 @@
+.psychologist-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+}
+
+.sidebar-role {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.create-patient-button {
+  background: var(--gradient-calm);
+  transition: var(--transition-smooth);
+}
+
+.create-patient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-title {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: hsl(var(--primary));
+}
+
+.stat-success {
+  color: hsl(var(--success));
+}
+
+.stat-warning {
+  color: hsl(var(--warning));
+}
+
+.search-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsl(var(--muted-foreground));
+}
+
+.search-input {
+  padding-left: 3rem;
+}
+
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.patient-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  transition: var(--transition-smooth);
+}
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.patient-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.patient-name {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.patient-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem;
+  background: hsl(var(--accent));
+  border-radius: 6px;
+}
+
+.info-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.view-details-button {
+  background: var(--gradient-calm);
+  transition: var(--transition-smooth);
+}
+
+.view-details-button:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-soft);
+}
+
+.empty-state {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  padding: 3rem;
+}
+
+.empty-icon {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.5;
+}

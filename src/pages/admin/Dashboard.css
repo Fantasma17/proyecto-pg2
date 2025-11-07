@@ -1,0 +1,144 @@
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+}
+
+.sidebar-role {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.create-button {
+  background: var(--gradient-calm);
+  transition: var(--transition-smooth);
+}
+
+.create-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-stat-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.table-card {
+  box-shadow: var(--shadow-card);
+  border: 1px solid hsl(var(--border));
+}
+
+.psychologists-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: hsl(var(--accent));
+  border-radius: 8px;
+  border-left: 3px solid hsl(var(--primary));
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.table-row:hover {
+  background: hsl(var(--accent) / 0.7);
+  transform: translateX(4px);
+}
+
+.table-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.table-cell-main {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell-title {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+}
+
+.cell-subtitle {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.cell-label {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cell-value {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.table-cell-actions {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.delete-button {
+  border-color: hsl(var(--destructive));
+  color: hsl(var(--destructive));
+  transition: var(--transition-smooth);
+}
+
+.delete-button:hover {
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+}
+
+.empty-table {
+  text-align: center;
+  padding: 3rem;
+}
+
+.empty-icon {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.5;
+  margin: 0 auto 1rem;
+}
+
+@media (max-width: 768px) {
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .table-cell-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
