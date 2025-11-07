@@ -15,11 +15,13 @@ import PatientProfile from "./pages/paciente/Profile";
 
 // Psychologist pages
 import PsychologistDashboard from "./pages/psicologo/Dashboard";
+import PsychologistProfile from "./pages/psicologo/Proflile";
 import PsychologistPatientDetails from "./pages/psicologo/PatientDetails";
 import PsychologistCreatePatient from "./pages/psicologo/CreatePatient";
 
 // Admin pages
 import AdminDashboard from "./pages/admin/Dashboard";
+import AdminProfile from "./pages/admin/Profile";
 import AdminCreatePsychologist from "./pages/admin/CreatePsychologist";
 
 import NotFound from "./pages/NotFound";
@@ -47,11 +49,13 @@ const App = () => (
           
           {/* Psychologist Routes */}
           <Route path="/psicologo/dashboard" element={<PsychologistDashboard />} />
+          <Route path="/psicologo/perfil" element={<PsychologistProfile />} />
           <Route path="/psicologo/crear-paciente" element={<PsychologistCreatePatient />} />
           <Route path="/psicologo/paciente/:id" element={<PsychologistPatientDetails />} />
           
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/perfil" element={<AdminProfile />} />
           <Route path="/admin/crear-psicologo" element={<AdminCreatePsychologist />} />
           
           {/* 404 */}

@@ -27,33 +27,47 @@ const AdminCreatePsychologist = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!fullName.trim()) {
+      toast({ title: 'Nombre requerido', description: 'Ingresa el nombre completo del psicólogo', variant: 'destructive' });
+      return;
+    }
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      const newCredentials = generateCredentials(fullName);
-      
-      // Store psychologist in localStorage
-      const storedUsers = JSON.parse(localStorage.getItem('metapsis_users') || '[]');
-      const newPsychologist = {
-        id: Date.now().toString(),
-        email: newCredentials.email,
-        password: newCredentials.password,
-        role: 'psicologo',
-        name: fullName,
-        createdAt: new Date().toISOString()
-      };
-      storedUsers.push(newPsychologist);
-      localStorage.setItem('metapsis_users', JSON.stringify(storedUsers));
-      
-      setCredentials(newCredentials);
-      setIsLoading(false);
-      
+    try {
+      const API_BASE = import.meta.env.VITE_API_URL || '';
+      const token = localStorage.getItem('token') || '';
+
+      const res = await fetch(`${API_BASE}/api/users/psychologists`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {})
+        },
+        body: JSON.stringify({ name: fullName })
+      });
+
+      const j = await res.json();
+      if (!res.ok) {
+        throw new Error(j.message || 'Error creando psicólogo');
+      }
+
+      const createdEmail = j.data?.email;
+      const genPass = j.generatedPassword;
+      if (!createdEmail || !genPass) {
+        throw new Error('Respuesta inválida del servidor');
+      }
+
+      setCredentials({ email: createdEmail, password: genPass });
       toast({
         title: "✅ Psicólogo Creado Exitosamente",
-        description: "Las credenciales se muestran abajo. Cópialas y entrégalas al nuevo psicólogo.",
+        description: `Se creó ${createdEmail}. Copia las credenciales.`,
       });
-    }, 1000);
+    } catch (err: any) {
+      console.error('Create psychologist error:', err);
+      toast({ title: 'Error', description: err.message || 'No se pudo crear el psicólogo', variant: 'destructive' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleCopyCredentials = () => {

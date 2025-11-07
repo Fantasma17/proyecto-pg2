@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Chatbot + Detección de emociones</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; }
+    #video { width: 320px; height: 240px; border: 1px solid #ccc; }
+    #messages { border:1px solid #ddd; padding:10px; height:200px; overflow:auto; margin-bottom:10px; }
+    .msg.user { color: blue; }
+    .msg.bot { color: green; }
+  </style>
+</head>
+<body>
+  <h2>Chatbot (con detección de emociones)</h2>
+
+  <div>
+    <video id="video" autoplay muted></video>
+    <div>Emoción detectada: <span id="emotion">--</span></div>
+  </div>
+
+  <div id="messages"></div>
+
+  <input id="input" type="text" placeholder="Escribe tu mensaje..." style="width:70%" />
+  <button id="send">Enviar</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script src="./js/emotion.js"></script>
+  <script>
+    const sendBtn = document.getElementById('send');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    function addMessage(text, who = 'user') {
+      const div = document.createElement('div');
+      div.className = 'msg ' + (who === 'user' ? 'user' : 'bot');
+      div.textContent = (who === 'user' ? 'Tú: ' : 'Bot: ') + text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', async () => {
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      input.value = '';
+      const emotion = window.currentEmotion || 'neutral';
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, emotion })
+        });
+        const j = await res.json();
+        if (j.success) addMessage(j.data, 'bot');
+        else addMessage('Error: ' + (j.message || 'respuesta no válida'), 'bot');
+      } catch (err) {
+        addMessage('Error de red', 'bot');
+      }
+    });
+  </script>
+</body>
+</html>

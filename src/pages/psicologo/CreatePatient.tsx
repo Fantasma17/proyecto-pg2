@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Users, UserPlus, Settings, LogOut, CheckCircle, Copy } from "lucide-react";
+import { Users, UserPlus, User, LogOut, CheckCircle, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -100,10 +100,10 @@ const PsychologistCreatePatient = () => {
             <UserPlus size={20} />
             <span>Crear Paciente</span>
           </Link>
-          <div className="nav-item" onClick={() => alert("Funcionalidad próximamente")}>
-            <Settings size={20} />
-            <span>Configuración</span>
-          </div>
+          <Link to="/psicologo/perfil" className="nav-item">
+            <User size={20} />
+            <span>Mi Perfil</span>
+          </Link>
         </nav>
 
         <div className="sidebar-footer">

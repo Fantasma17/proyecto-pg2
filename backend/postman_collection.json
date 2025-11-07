@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Metapsis API",
+    "_postman_id": "metapsis-collection",
+    "description": "Colección básica para probar API (admin/create, login, profile, chat)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Admin (force)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"force\": true,\n  \"password\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/users/admin/create",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api","users","admin","create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login (get token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@metapsis.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/auth/login",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api","auth","login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const json = pm.response.json();",
+              "if (json && json.token) {",
+              "  pm.environment.set('TOKEN', json.token);",
+              "  console.log('TOKEN saved to environment');",
+              "} else {",
+              "  console.log('No token in response');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Get My Profile (protected)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/api/users/me",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api","users","me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat (AI)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"Hola, necesito ayuda\",\n  \"emotion\": \"neutral\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/chat",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api","chat"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

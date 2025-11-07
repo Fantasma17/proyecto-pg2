@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Send, Brain, MessageCircle, ClipboardList, User, LogOut, Camera, Smile, Meh, Frown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
 import metapsisLogo from "@/assets/metapsis-logo.png";
+import { EmotionCamera } from "@/components/EmotionCamera";
 import { initializeEmotionDetector, analyzeEmotionFromVideo, cleanupDetector, EmotionScore } from "@/utils/emotionDetection";
 import "./Chat.css";
 
@@ -31,6 +32,7 @@ const PatientChat = () => {
   const [cameraActive, setCameraActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDetectorReady, setIsDetectorReady] = useState(false);
+  const [emotion, setEmotion] = useState<string>('neutral');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);

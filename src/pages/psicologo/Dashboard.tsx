@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Users, UserPlus, Search, Brain, Settings, LogOut, Eye } from "lucide-react";
+import { Users, UserPlus, Search, Brain, User, LogOut, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -94,10 +94,10 @@ const PsychologistDashboard = () => {
             <UserPlus size={20} />
             <span>Crear Paciente</span>
           </Link>
-          <div className="nav-item" onClick={() => alert("Funcionalidad próximamente")}>
-            <Settings size={20} />
-            <span>Configuración</span>
-          </div>
+          <Link to="/psicologo/perfil" className="nav-item">
+            <User size={20} />
+            <span>Mi Perfil</span>
+          </Link>
         </nav>
 
         <div className="sidebar-footer">
